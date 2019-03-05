@@ -35,6 +35,8 @@ $(document).ready(function() {
 
     // Slugify
     function slugify(s, num_chars) {
+        s = s.normalize('NFD');
+        s = s.replace(/[\u0300-\u036f]/g, "");      // Replace diacritics with ASCII 
         s = s.replace(/[^\-\.\w\s]/g, '');          // Remove unneeded chars
         s = s.replace(/^[\s\.]+|[\s\.]+$/g, '');    // Trim leading/trailing spaces
         s = s.replace(/[\-\.\s]+/g, '-');           // Convert spaces and decimals to hyphens
